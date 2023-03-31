@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="./assets/theme.css" rel="stylesheet" type="text/css">
+    <link href="./assets/prism.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   </head>
 
   <body>
-    <script src="./assets/rainbow-custom.min.js"></script>
+    <script src="./assets/prism.js"></script>
     <div class="containers">
       <div class="left-container">
         <div class="logo">INFNT</div>
@@ -61,22 +61,46 @@
           </li>
         </div>
       </div>
-      <div class="center-container">
-        <div class="switch__parent">
+<!--    <div class="switch__parent">
           <div class="switch__lan switch__lan--js">JS</div>
           <div class="switch__lan switch__lan--py">PY</div>
           <div class="switch__lan switch__lan--c">C++</div>
         </div>
-        <pre class="code__card">
-            <code class="code" data-language="python">
-              def Why_I_am_better_than_all_your_seniour_guys():
-                  javascript_skills = '100lvl'
-                  leetcode = '400 solved'
-                  css = 'mastery'
-                  return cuzIhaveMoreKnowledge()
-            </code>
+-->
+
+      <div class="prompt pre__highlight">
+        <pre class="pre__highlight">
+          <code class="highlight language-powershell">
+Given a string num that contains only digits and an integer target,
+return all possibilities to insert the binary operators '+', '-', and/or '*'
+between the digits of num so that the resultant expression evaluates to the target value.
+Note that operands in the returned expressions should not contain leading zeros.
+          </code>
         </pre>
+      </div>
+
+      <div class="editor__wrapper">
+        <textarea id="editing"
+          oninput="update(this.value); sync_scroll(this);"
+          onscroll="sync_scroll(this);"
+          onkeydown="check_tab(this, event)"
+          spellcheck="false"></textarea>
+
+        <pre id="highlighting" aria-hidden="true">
+          <code id="highlighting-content" class="code language-python"></code>
+        </pre>
+        <div>
+          <button class="editor__button" onclick="sendCode()">Send Code</button>
         </div>
+      </div>
+
+      <div class="output__wrapper">
+        <pre area-hidden="true">
+          <code id="output__window" class="language-powershell"></code>
+        </pre>
+      </div>
+
+
       <div class="scroller__parent">
         <i class="arrow down" draggable="true"></i>
         <i class="arrow down" draggable="true"></i>
@@ -93,17 +117,19 @@
       </div>
 
       <section class="beatanyone">
-        <div class="ag-courses_item">
-          <a href="https://cssbattle.dev/" class="ag-courses-item_link">
-            <div class="ag-courses-item_bg"></div>
-            <div class="ag-courses-item_title">
-              CSS Battles
-            </div>
-            <div></div>
-            <div class="ag-courses-item_date-box">
-              I'm going to beat them all in CSS battles
-            </div>
-          </a>
+        <div>
+          <div class="ag-courses_item">
+            <a href="https://cssbattle.dev/" class="ag-courses-item_link">
+              <div class="ag-courses-item_bg"></div>
+              <div class="ag-courses-item_title">
+                CSS Battles
+              </div>
+              <div></div>
+              <div class="ag-courses-item_date-box">
+                I'm going to beat them all in CSS battles
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -125,19 +151,24 @@
       </section>
 
       <section class="beatanyone">
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-              <div class="ag-courses-item_title">
-                JavaScript Knowledge
-              </div>
-              <div></div>
-              <div class="ag-courses-item_date-box">
-                What is a generator function ? 
-                How is it used in combination with Promises to secure asynchronisity of JS
-              </div>
-            </a>
-          </div>
+        <div>
+            <div class="ag-courses_item">
+              <a href="#" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">
+                  JavaScript Knowledge
+                </div>
+                <div></div>
+                <div class="ag-courses-item_date-box">
+                  What is a generator function ? 
+                  How is it used in combination with Promises to secure asynchronisity of JS
+                </div>
+                <div class="ag-courses-item_date">
+                  generator function ?
+                </div>
+              </a>
+            </div>
+        </div>
       </section>
 
       <section class="beatanyone"></section>
@@ -252,20 +283,96 @@
 
       for(const arrow of arrowsUp) {
         arrow.addEventListener('dragstart', function (event) {
-          console.log('draggin');
            tl.to('.beatanyone__container', {
-            duration: 1,
-            y: "-100%",
             display: "none",
-            opacity: 0,
-            ease: "power2.in"
-          }, "-=1").
+            duration: 1,
+            delay: -1,
+            ease: "none"
+          }).
            to('.containers', {
             duration: 1,
             y: "0",
-            ease: "expo.in",
-          }, "<1")
-        })
+            ease: "none",
+          })
+        });
+      }
+
+      async function sendCode() {
+        try {
+          const textCode = document.getElementById('highlighting-content');
+
+          const outputNode = document.getElementById('output__window');
+
+          //if (!textCode.innerText.includes("def why_im_better_than_your_seniours()")) return;
+
+          //textCode.innerText+="\n why_im_better_than_your_seniours()"
+
+          console.log(textCode, textCode.innerText);
+          //formData.append("");
+          const request = await fetch("http://localhost:3000", {
+             method: "POST", body: new URLSearchParams({
+              'language': 'py',
+              'code': textCode.innerText// + "\n\twhy_im_better_than_your_seniours()"
+             }), headers: { 
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          });
+
+          const response = await request.json();
+
+          outputNode.innerHTML = "";
+
+          outputNode.innerText = String(response.output || response.error).trim();
+
+          Prism.highlightElement(outputNode);
+          //console.log(response.json());
+        } catch (error) {
+          console.log(error);
+        } 
+      }
+
+      let highlightText = document.getElementById('editing');
+
+      highlightText.value = "def why_im_better_than_your_seniours() -> str:" + "\n\t" + "pass";
+
+      update("def why_im_better_than_your_seniours() -> str:" + "\n\t" + "pass");
+
+      function update(text) {
+        let result_element = document.getElementById("highlighting-content");
+        // Update code
+        result_element.innerText = text;
+
+        if(text[text.length-1] == "\n") { // If the last character is a newline character
+          text += " "; // Add a placeholder space character to the final line 
+        }
+
+        result_element.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<"); 
+        // Syntax Highlight
+        Prism.highlightElement(result_element);
+      }
+
+      function check_tab(element, event) {
+        let code = element.value;
+        if(event.key == "Tab") {
+          /* Tab key pressed */
+          event.preventDefault(); // stop normal
+          let before_tab = code.slice(0, element.selectionStart); // text before tab
+          let after_tab = code.slice(element.selectionEnd, element.value.length); // text after tab
+          let cursor_pos = element.selectionEnd + 1; // where cursor moves after tab - moving forward by 1 char to after tab
+          element.value = before_tab + "\t" + after_tab; // add tab char
+
+          element.selectionStart = cursor_pos;
+          element.selectionEnd = cursor_pos;
+          update(element.value); // Update text to include indent
+        }
+      }
+
+      function sync_scroll(element) {
+        /* Scroll result to scroll coords of event - sync with textarea */
+        let result_element = document.querySelector("#highlighting");
+        // Get and set x and y
+        result_element.scrollTop = element.scrollTop;
+        result_element.scrollLeft = element.scrollLeft;
       }
 
     </script>
