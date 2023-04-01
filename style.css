@@ -44,8 +44,8 @@
   left: .5rem;
   outline: none;
   border: none;
-  background: rgb(35, 131, 35);
-  color: #fff;
+  background: #fff;
+  color: #000;
   padding: 1rem 1.5rem;
   font-weight: 500;;
   border-radius: 2rem;
@@ -54,8 +54,8 @@
 }
 
 .editor__button:hover {
-  border-radius: .5rem;
-  background: red;
+  color: #fff;
+  background: #000;
 }
 
 
@@ -111,6 +111,17 @@
   width: 70vw;
 }
 
+#to {
+  text-align: center;
+  font-size: 20px;
+}
+
+.cursor {
+  width: 10px;
+  height: 2px;
+  background: #000;
+}
+
 .center-container {
   position: absolute;
   top: 25vh;
@@ -164,6 +175,8 @@
 
 .great {
   font-size: 2rem;
+  display: flex;
+  align-items: baseline;
 }
 
 .story h1 {
@@ -345,6 +358,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Move the textarea in front of the result */

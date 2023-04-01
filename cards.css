@@ -13,6 +13,7 @@
 
 .ag-courses-item_link {
   display: block;
+  text-decoration: none;
   padding: 30px 20px;
   background-color: #121212;
 
@@ -56,7 +57,7 @@
 
 .ag-courses-item_date {
   font-weight: bold;
-  color: #f9b234;
+  color: #f6b352;
 
   -webkit-transition: color .5s ease;
   -o-transition: color .5s ease;
@@ -66,7 +67,7 @@
 .ag-courses-item_bg {
   height: 128px;
   width: 128px;
-  background-color: #f9b234;
+  background-color: #f6b352;
 
   z-index: 1;
   position: absolute;
