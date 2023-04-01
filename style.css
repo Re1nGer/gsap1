@@ -308,6 +308,7 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 2rem;
   position: relative;
 }
@@ -321,6 +322,14 @@
 .nav__link a {
   text-decoration: none;
   color: #000;
+}
+
+.github__link {
+  text-decoration: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 #too__simple-huh {

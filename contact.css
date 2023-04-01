@@ -1,0 +1,59 @@
+.contacts {
+  max-width: 1000px;
+  width: 100%;
+  margin-inline: auto;
+  margin-top: 1rem;
+  min-height: 800px;
+
+}
+
+.contacts__form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    max-width: 500px;
+    min-height: 600px;
+    border: 2px solid #000;
+    gap: 1rem;
+    border-radius: .5rem;
+}
+
+.contacts__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts__message {
+    border: 2px solid #f6b352;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+.contacts__email {
+    border: 2px solid #f6b352;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+.contacts__button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contacts__button {
+    outline: none;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    border-radius: 1rem;
+    font-weight: 600;
+    padding: .5rem 2rem;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.contacts__button:hover {
+    color: #fff;
+    background: #000;
+}

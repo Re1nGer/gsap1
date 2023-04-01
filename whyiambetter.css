@@ -6,6 +6,11 @@
   opacity: 1;
 }
 
+.skills__title {
+  text-align: center;
+  margin: 2rem 0;
+}
+
 .beatanyone__container::before {
   content: '';
   position: absolute;
