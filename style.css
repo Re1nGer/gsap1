@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Fira Code", monospace;
+  scroll-behavior: smooth;
 }
 
 .containers {
@@ -20,21 +21,43 @@
   width: 50%;
   color: white;
   display: flex;
+  gap: 1rem;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .editor__wrapper {
-  position: absolute;
-  width: 40%;
-  top: 50%;
+  position: relative;
+  width: 100%;
+  min-height:  200px;
+  max-height: 1920px;
   left: 0;
 }
 
 .output__wrapper {
-  position: absolute;
+  position: relative;
   width: 40%;
 }
+
+.editor__button {
+  position: relative;
+  left: .5rem;
+  outline: none;
+  border: none;
+  background: rgb(35, 131, 35);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-weight: 500;;
+  border-radius: 2rem;
+  transition: all .2s linear;
+  cursor: pointer;
+}
+
+.editor__button:hover {
+  border-radius: .5rem;
+  background: red;
+}
+
 
 .scroller__parent {
   z-index: 10;
@@ -112,10 +135,16 @@
 }
 
 .story {
-  position: absolute;
-  height: 40%;
-  top: 30vh;
-  transform: translateX(50%)
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.story__wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 #because {
@@ -194,7 +223,7 @@
 }
 
 .social-container {
-  position: absolute;
+  position: relative;
   bottom: 2rem;
   right: 2rem;
 }
@@ -233,37 +262,17 @@
   }
 }
 
-.editor__button {
-  position: relative;
-  transform: translateY(25vh);
-  left: .5rem;
-  outline: none;
-  border: none;
-  background: rgb(35, 131, 35);
-  color: #fff;
-  padding: 1rem 1.5rem;
-  font-weight: 500;;
-  border-radius: 2rem;
-  transition: all .2s linear;
-  cursor: pointer;
-}
-
-.editor__button:hover {
-  border-radius: .5rem;
-  background: red;
-}
-
 /* Paragraphs; First Image */
 
 .output__wrapper {
-  position: absolute;
-  width: 40%;
+  width: 100%;
+  padding-inline: 1rem;
   bottom: 0;
 }
 
 .prompt {
-  position: absolute;
-  width: 45%;
+  position: relative;
+  width: 100%;
   top: 2rem;
   z-index: 2;
   padding-inline: 1rem;
@@ -272,10 +281,11 @@
 
 .prompt__try {
   color: #fff;
-  position: absolute;
-  top: 45%;
+  position: relative;
+  align-self: flex-start;
   padding-inline: 1rem;
   outline: none;
+  top: 0;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -293,6 +303,11 @@
   list-style-type: none;
   position: relative;
   cursor: pointer;
+}
+
+.nav__link a {
+  text-decoration: none;
+  color: #000;
 }
 
 #too__simple-huh {
@@ -326,10 +341,16 @@
   justify-self: flex-start;
 }
 
+.works {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 /* Move the textarea in front of the result */
 @media screen and (max-width: 1000px) {
-  .right-container {
-    display: none;
+  .containers {
+    flex-direction: column;
   }
 
   .left-container {
@@ -350,5 +371,10 @@
   
   #editing, #highlighting {
     width: 100%;
+  }
+
+  .works {
+    flex-direction: column;
+    align-items: center;
   }
 }
