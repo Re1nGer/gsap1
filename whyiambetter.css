@@ -1,0 +1,30 @@
+.beatanyone__container {
+  position: relative;
+  top: 0;
+  padding: 1rem 0;
+  height: 100%;
+  opacity: 0;
+  display: none;
+}
+
+.beatanyone__container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  height: 90%;
+  width: 2px;
+  bottom: 0;
+  background: black;
+}
+
+.beatanyone {
+  max-width: 1000px;
+  width: 100%;
+  margin-inline: auto;
+  margin-top: 1rem;
+}
+
+.beatanyone__right {
+  display: flex;
+  justify-content: flex-end;
+}

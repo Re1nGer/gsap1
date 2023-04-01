@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cards.css" />
+    <link rel="stylesheet" href="editor.css" />
+    <link rel="stylesheet" href="whyiambetter.css">
     <link href="./assets/prism.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
@@ -15,22 +18,28 @@
     <script src="./assets/prism.js"></script>
     <div class="containers">
       <div class="left-container">
-        <div class="logo">INFNT</div>
-        <div class="info">
-          <a href="#">FAQ</a>
-          <a href="#">Help</a>
-        </div>
+        
       </div>
 
       <div class="right-container">
-        <div class="first-block"></div>
-        <div class="menu-container">
-          <div class="menu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <nav class="nav">
+          <span id="too__simple-huh">Too simple, huh ?</span>
+          <ul class="nav__links-wrapper">
+            <li class="nav__link">Why I'm better</li>
+            <li class="nav__link">Works</li>
+            <li class="nav__link">Contacts</li>
+          </ul>
+
+          <div class="menu-container">
+            <div class="menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
-        </div>
+
+        </nav>
+<!--         <div class="first-block"></div> -->
 
         <div class="story">
           <div id="because">
@@ -47,6 +56,7 @@
           </h2>
           <p>Read More</p>
         </div>
+
         <div class="social-container">
           <li class="social">
             <ul>
@@ -60,6 +70,7 @@
             </ul>
           </li>
         </div>
+
       </div>
 <!--    <div class="switch__parent">
           <div class="switch__lan switch__lan--js">JS</div>
@@ -68,8 +79,9 @@
         </div>
 -->
 
-      <div class="prompt pre__highlight">
-        <pre class="pre__highlight">
+      <div class="pre__highlight prompt">
+        <h2 style="color:#fff;">Here's some prompt</h2>
+        <pre>
           <code class="highlight language-powershell">
 Given a string num that contains only digits and an integer target,
 return all possibilities to insert the binary operators '+', '-', and/or '*'
@@ -79,6 +91,8 @@ Note that operands in the returned expressions should not contain leading zeros.
         </pre>
       </div>
 
+<!--       <h2 style="color: #fff;">Here's your solution.... welp</h2> -->
+      <button class="prompt__try">Try</button>
       <div class="editor__wrapper">
         <textarea id="editing"
           oninput="update(this.value); sync_scroll(this);"
@@ -175,11 +189,13 @@ Note that operands in the returned expressions should not contain leading zeros.
     </div>
     <section id="works"></section>
 
+    <section id="contacts"></section>
+
     <script type="text/javascript" defer>
       const tl = gsap.timeline();
 
-      tl.from(".left-container", {
-        duration: 1.5,
+       tl.from(".left-container", {
+        duration: 1,
         width: "0",
         ease: "expo.out"
       })
@@ -188,7 +204,7 @@ Note that operands in the returned expressions should not contain leading zeros.
         width: "0",
         opacity: 0,
         ease: "expo.inOut"
-      }, "1") // start after 1.5 seconds delay
+      }) // start after 1.5 seconds delay
       .from(".down", {
         opacity: 0,
         duration: -1
@@ -255,9 +271,47 @@ Note that operands in the returned expressions should not contain leading zeros.
         stagger: 0.1
       }, "-=3.8") // start after 3.8 seconds delay
 
+
+      const editorButton = document.querySelector('.editor__button');
+
+      const links = document.getElementsByClassName('nav__link');
+
+      const tooSimple = document.getElementById('too__simple-huh');
+
+      const tryButton = document.querySelector('.prompt__try');
+
+      const leftContainer = document.querySelector('.left-contaienr');
+
+      const rightContainer = document.querySelector('.right-container');
+
+      for (const link of links) {
+        link.addEventListener('mouseover', function handleEvent(event) {
+            tooSimple.style.opacity = "1";
+            tooSimple.style.transform = 'rotate(-15deg)';
+        });
+        link.addEventListener('mouseout', function handleEvent(event) {
+            //tooSimple.textContent = "";
+            tooSimple.style.opacity = "0";
+        })
+      }
+
+      editorButton.addEventListener('mouseover', function handleEvent(event) {
+        this.innerText = "Are you bloody sure ?";
+      });
+
+      editorButton.addEventListener('mouseout', function handleEvent(event) {
+        this.innerText = "Send Code";
+      });
+
+      tryButton.addEventListener('click', function handleEvent(event) {
+
+      });
+
       var t2 = gsap.timeline({ repeat: -1, repeatDelay: .5 });
 
       t2.from('.arrow', { y: -10, stagger: .2 });
+
+      //t2.from('.prompt__try', { x: -10, ease: 'power2.inOut' })
 
       const arrowsDown = document.getElementsByClassName('arrow');
 
@@ -297,6 +351,12 @@ Note that operands in the returned expressions should not contain leading zeros.
         });
       }
 
+      const wrongPrompts = [
+        "Welp this ain't how it's working !",
+        "Not a right answer",
+        "Not that much of a seniour, huh ?"
+      ];
+
       async function sendCode() {
         try {
           const textCode = document.getElementById('highlighting-content');
@@ -307,7 +367,6 @@ Note that operands in the returned expressions should not contain leading zeros.
 
           //textCode.innerText+="\n why_im_better_than_your_seniours()"
 
-          console.log(textCode, textCode.innerText);
           //formData.append("");
           const request = await fetch("http://localhost:3000", {
              method: "POST", body: new URLSearchParams({
@@ -323,6 +382,16 @@ Note that operands in the returned expressions should not contain leading zeros.
           outputNode.innerHTML = "";
 
           outputNode.innerText = String(response.output || response.error).trim();
+          //console.log(response.output.split("True").join('').trim().split())
+
+          const testsFailed = response.output.split("\n").some(item => item === 'False');
+
+          if (!response.error && !testsFailed) {
+            outputNode.innerText = "wow wow";
+          }
+          else if (!response.error && testsFailed) {
+            outputNode.innerText = wrongPrompts[Math.floor(Math.random()*wrongPrompts.length)];;
+          }
 
           Prism.highlightElement(outputNode);
           //console.log(response.json());
@@ -333,9 +402,9 @@ Note that operands in the returned expressions should not contain leading zeros.
 
       let highlightText = document.getElementById('editing');
 
-      highlightText.value = "def why_im_better_than_your_seniours() -> str:" + "\n\t" + "pass";
+      highlightText.value = "def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass";
 
-      update("def why_im_better_than_your_seniours() -> str:" + "\n\t" + "pass");
+      update("def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass");
 
       function update(text) {
         let result_element = document.getElementById("highlighting-content");

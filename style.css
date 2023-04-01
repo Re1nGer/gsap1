@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Fira Code", monospace;
 }
 
 .containers {
@@ -36,6 +37,7 @@
 }
 
 .scroller__parent {
+  z-index: 10;
   position: absolute;
   transform: translate(-50%, 0);
   bottom: 1rem;
@@ -97,53 +99,6 @@
   box-shadow: 7px 29px 49px 0px rgba(0, 0, 0, 0.5);
 }
 
-.switch__parent {
-  display: flex;
-  justify-content: flex-end;
-  margin-inline: 1rem;
-}
-
-.switch__lan {
-  width: 30px;
-  height: 30px;
-  margin-inline: .2rem;
-  text-align: center;
-  border: transparent;
-  align-items: center;
-  transition: all .2s linear;
-  cursor: pointer;
-  font-size: 12px;
-  display: flex;
-  border-radius: 50%;
-  justify-content: center;
-  color: #fff;
-  opacity: 1;
-}
-
-.switch__lan--js {
-  background: yellow;
-  font-weight: 600;
-  color:rgba(0, 0, 0, 1);
-}
-
-.switch__lan--py {
-  background: #2aa198;
-}
-
-.switch__lan--c {
-  background: #268bd2;
-}
-
-.switch__lan:hover {
-  box-shadow: 7px 29px 49px 0px rgba(0, 0, 0, 0.5);
-}
-
-.logo {
-  padding: 3rem;
-  font-size: 2rem;
-  font-family: "helvetica";
-}
-
 .info {
   display: flex;
   padding: 3rem;
@@ -203,12 +158,10 @@
 }
 
 .menu-container {
-  position: absolute;
-  top: 3rem;
-  right: 4rem;
   width: 50px;
   height: 45px;
 }
+
 .menu,
 .menu:after,
 .menu:before {
@@ -220,6 +173,8 @@
   position: relative;
   transform: translateY(20px);
   background: black;
+/*   for now  */
+  display: none;
 }
 
 .menu:before {
@@ -229,6 +184,7 @@
   bottom: 15px;
   background: black;
 }
+
 .menu:after {
   content: "";
   position: absolute;
@@ -277,196 +233,27 @@
   }
 }
 
-.editor__wrapper {
-}
-
 .editor__button {
   position: relative;
   transform: translateY(25vh);
-  right: 0;
+  left: .5rem;
   outline: none;
   border: none;
   background: rgb(35, 131, 35);
   color: #fff;
-  padding: .5rem 1rem;
+  padding: 1rem 1.5rem;
   font-weight: 500;;
-  border-radius: 1rem;
+  border-radius: 2rem;
   transition: all .2s linear;
   cursor: pointer;
 }
 
 .editor__button:hover {
-  background:rgb(40, 167, 40);
+  border-radius: .5rem;
+  background: red;
 }
-
-.beatanyone__container {
-  position: relative;
-  top: 0;
-  padding: 1rem 0;
-  height: 100%;
-  opacity: 0;
-  display: none;
-}
-
-.beatanyone__container::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  height: 90%;
-  width: 2px;
-  bottom: 0;
-  background: black;
-}
-
-.beatanyone {
-  max-width: 1000px;
-  width: 100%;
-  margin-inline: auto;
-  margin-top: 1rem;
-}
-
-.beatanyone__right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.ag-courses_item {
-  -ms-flex-preferred-size: calc(33.33333% - 30px);
-  flex-basis: calc(33.33333% - 30px);
-
-  margin: 0 15px 30px;
-
-  overflow: hidden;
-
-  border-radius: 28px;
-
-  max-width: 450px;
-}
-
-.ag-courses-item_link {
-  display: block;
-  padding: 30px 20px;
-  background-color: #121212;
-
-  overflow: hidden;
-
-  position: relative;
-}
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_date {
-  text-decoration: none;
-  color: #FFF;
-}
-
-.ag-courses-item_link:hover .ag-courses-item_bg {
-  -webkit-transform: scale(10);
-  -ms-transform: scale(10);
-  transform: scale(10);
-}
-
-.ag-courses-item_title {
-  min-height: 87px;
-  margin: 0 0 25px;
-
-  overflow: hidden;
-
-  font-weight: bold;
-  font-size: 30px;
-  color: #FFF;
-
-  z-index: 2;
-  position: relative;
-}
-
-.ag-courses-item_date-box {
-  font-size: 18px;
-  color: #FFF;
-
-  z-index: 2;
-  position: relative;
-}
-
-.ag-courses-item_date {
-  font-weight: bold;
-  color: #f9b234;
-
-  -webkit-transition: color .5s ease;
-  -o-transition: color .5s ease;
-  transition: color .5s ease
-}
-
-.ag-courses-item_bg {
-  height: 128px;
-  width: 128px;
-  background-color: #f9b234;
-
-  z-index: 1;
-  position: absolute;
-  top: -75px;
-  right: -75px;
-
-  border-radius: 50%;
-
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
 
 /* Paragraphs; First Image */
-* {
-  font-family: "Fira Code", monospace;
-}
-p code {
-  border-radius: 2px;
-  background-color: #eee;
-  color: #111;
-}
-
-.pre__highlight {
-  font-size: 15pt;
-  font-family: monospace;
-  line-height: 20pt;
-  tab-size: 2;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.highlight {
-  margin: 10px;
-  padding: 10px;
-  border: 0;
-  width: calc(100% - 32px);
-  height: 150px;
-  resize: none;
-  font-size: 12px;
-  padding: 0 2rem;
-}
-
-#editing, #highlighting {
-  /* Both elements need the same text and space styling so they are directly on top of each other */
-  margin: 10px;
-  padding: 10px;
-  border: 0;
-  width: calc(100% - 32px);
-  height: 150px;
-
-  resize: none;
-}
-#editing, #highlighting, #highlighting * {
-  /* Also add text styles to highlighing tokens */
-  font-size: 15pt;
-  font-family: monospace;
-  line-height: 20pt;
-  tab-size: 2;
-}
-
-#editing, #highlighting {
-  /* In the same place */
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 
 .output__wrapper {
   position: absolute;
@@ -477,53 +264,91 @@ p code {
 .prompt {
   position: absolute;
   width: 45%;
-  top: 0;
+  top: 2rem;
   z-index: 2;
   padding-inline: 1rem;
+  font-size: 1em;
 }
 
-.prompt * {
-  padding: 0;
+.prompt__try {
+  color: #fff;
+  position: absolute;
+  top: 45%;
+  padding-inline: 1rem;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.nav__link {
+  list-style-type: none;
+  position: relative;
+  cursor: pointer;
+}
+
+#too__simple-huh {
+  position: absolute;
+  top: 1rem;
+  color: #000;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  bottom: -.2rem;
+  left: 0;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+.nav__link:hover::after {
+  opacity: 1;
+}
+
+.nav__links-wrapper {
+  display: flex;
+  gap: 3rem;
+  justify-self: flex-start;
 }
 
 /* Move the textarea in front of the result */
-#editing {
-  z-index: 1;
-}
+@media screen and (max-width: 1000px) {
+  .right-container {
+    display: none;
+  }
 
-#editing:focus {
-  border: none;
-  outline: none;
-}
+  .left-container {
+    width: 100%;
+  }
 
-#highlighting {
-  z-index: 0;
-}
+  .editor__wrapper {
+    width: 100%;
+  }
 
+  .prompt {
+    width: 100%;
+  }
 
-/* Make textarea almost completely transparent */
-
-#editing {
-  color: transparent;
-  background: transparent;
-  caret-color: white;
-}
-
-/* Can be scrolled */
-#editing, #highlighting {
-  overflow: auto;
-  white-space: nowrap;
-}
-/* No resize on textarea */
-#editing {
-  resize: none;
-}
-
-pre[class*="language-"] {
-  padding: .4em .8em;
-  margin: .5em 0;
-  overflow: auto;
-  /* background: url('data:image/svg+xml;charset=utf-8,<svg%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"100"%20height%3D"100"%20fill%3D"rgba(0%2C0%2C0%2C.2)">%0D%0A<polygon%20points%3D"0%2C50%2050%2C0%200%2C0"%20%2F>%0D%0A<polygon%20points%3D"0%2C100%2050%2C100%20100%2C50%20100%2C0"%20%2F>%0D%0A<%2Fsvg>');
-  background-size: 1em 1em; - WebCoder49*/
-  background: black; /* - WebCoder49 */
+  .output__wrapper {
+    width: 100%;
+  }
+  
+  #editing, #highlighting {
+    width: 100%;
+  }
 }
