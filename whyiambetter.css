@@ -18,7 +18,8 @@
   height: 90%;
   width: 2px;
   bottom: 0;
-  background: black;
+  border: 1px solid #000;
+  border-style: none none none dashed;
 }
 
 .beatanyone {

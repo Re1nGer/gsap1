@@ -4,9 +4,8 @@
   padding: 10px;
   border: 0;
   width: calc(100% - 32px);
-  height: 100%;
-  min-height: 150px;
-  resize: none;
+  min-height: 200px;
+  max-height: 1920px;
 }
 
 #editing {
@@ -16,6 +15,7 @@
 #editing:focus {
   border: none;
   outline: none;
+  height: 100vh;
 }
 
 #highlighting {
@@ -83,6 +83,6 @@ p code {
   width: calc(100% - 32px);
   height: 150px;
   resize: none;
-  font-size: 12px;
+  font-size: var(--fs-300);
   padding: 0 2rem;
 }

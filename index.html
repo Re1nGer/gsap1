@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="whyiambetter.css">
     <link rel="stylesheet" href="portfoliocard.css">
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="footer.css">
     <link href="./assets/prism.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 
   </head>
 
@@ -30,10 +32,10 @@
           <h2 style="color:#fff;">Here's some prompt for your seniours</h2>
           <pre>
             <code class="highlight language-powershell">
-  Given a string num that contains only digits and an integer target,
-  return all possibilities to insert the binary operators '+', '-', and/or '*'
-  between the digits of num so that the resultant expression evaluates to the target value.
-  Note that operands in the returned expressions should not contain leading zeros.
+Given a string num that contains only digits and an integer target,
+return all possibilities to insert the binary operators '+', '-', and/or '*'
+between the digits of num so that the resultant expression evaluates to the target value.
+Note that operands in the returned expressions should not contain leading zeros.
             </code>
           </pre>
         </div>
@@ -73,6 +75,7 @@
             <li class="nav__link"><a href="#beatanyone">Skills</a></li>
             <li class="nav__link"><a href="#works">Works</a></li>
             <li class="nav__link"><a href="#contacts">Contacts</a></li>
+            <li class="nav__link"><a href="#aboutme">About me</a></li>
           </ul>
 
           <a class="github__link" href="https://github.com/Re1nGer" target="_blank" rel="noopener noreferrer">
@@ -194,7 +197,7 @@
         Works
       </h1>
       <div class="card">
-        <div class="card__details">
+        <section class="card__details">
           <div class="title">Full Stack Social Media Application</div>
           <div class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="100px" height="100px"><path d="M 25 4.0625 C 12.414063 4.0625 2.0625 12.925781 2.0625 24 C 2.0625 30.425781 5.625 36.09375 11 39.71875 C 10.992188 39.933594 11 40.265625 10.71875 41.3125 C 10.371094 42.605469 9.683594 44.4375 8.25 46.46875 L 7.21875 47.90625 L 9 47.9375 C 15.175781 47.964844 18.753906 43.90625 19.3125 43.25 C 21.136719 43.65625 23.035156 43.9375 25 43.9375 C 37.582031 43.9375 47.9375 35.074219 47.9375 24 C 47.9375 12.925781 37.582031 4.0625 25 4.0625 Z M 25 5.9375 C 36.714844 5.9375 46.0625 14.089844 46.0625 24 C 46.0625 33.910156 36.714844 42.0625 25 42.0625 C 22.996094 42.0625 21.050781 41.820313 19.21875 41.375 L 18.65625 41.25 L 18.28125 41.71875 C 18.28125 41.71875 15.390625 44.976563 10.78125 45.75 C 11.613281 44.257813 12.246094 42.871094 12.53125 41.8125 C 12.929688 40.332031 12.9375 39.3125 12.9375 39.3125 L 12.9375 38.8125 L 12.5 38.53125 C 7.273438 35.21875 3.9375 29.941406 3.9375 24 C 3.9375 14.089844 13.28125 5.9375 25 5.9375 Z"/></svg>
@@ -217,14 +220,14 @@
             View On Github
           </a>
 
-        </div>
-        <div class="card__description">
+        </section>
+        <section class="card__description">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque voluptatum, inventore laborum ipsa aspernatur dolorum distinctio praesentium incidunt, perferendis excepturi exercitationem quasi consequatur consequuntur maiores, debitis laudantium quas. Vel repellat repellendus quis laborum aspernatur nemo dolorem ipsum autem minus quasi rem nihil corrupti ipsa eius nobis libero, excepturi obcaecati sunt.
-        </div>
+        </section>
       </div>
 
       <div class="card">
-        <div class="card__details">
+        <section class="card__details">
           <div class="title">Fully Responsive Single Page</div>
           <div class="icon">
             <svg enable-background="new 0 0 512 512" height="512px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M285.928,113.067c62.492,0,113.327,50.827,113.327,113.327c0,0.344-0.041,0.705-0.066,1.049  c-0.049,0.836-0.107,1.672-0.123,2.525l-0.426,17.133l17.159,0.065c41.53,0.115,75.313,34.005,75.313,75.535  c0,41.415-33.718,75.305-75.157,75.518l-3.664,0.016H104.977c-46.244-0.049-83.872-37.693-83.872-83.929  c0-35.825,22.806-67.714,56.737-79.356l9.444-3.229l1.664-9.838c4.115-24.282,24.97-41.907,49.588-41.907  c7.846,0,15.428,1.82,22.536,5.394l15.306,7.689l7.386-15.444C202.531,138.398,242.635,113.067,285.928,113.067 M285.928,96.277  c-51.778,0-96.358,30.315-117.303,74.092c-9.059-4.558-19.256-7.182-30.086-7.182c-33.233,0-60.762,24.184-66.14,55.893  C32.82,232.657,4.316,270.104,4.316,314.307c0,55.597,45.063,100.669,100.644,100.718h311.084v-0.016  c50.777-0.263,91.856-41.481,91.856-92.308c0-50.909-41.177-92.177-92.053-92.324c0.033-1.344,0.197-2.639,0.197-3.984  C416.044,154.532,357.79,96.277,285.928,96.277L285.928,96.277z" fill="#37404D"/></svg>
@@ -245,14 +248,14 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             View On Github
           </a>
-        </div>
-        <div class="card__description">
+        </section>
+        <section class="card__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident qui necessitatibus molestias corporis non ipsum dolorum totam quibusdam ratione architecto, culpa earum accusantium impedit atque vitae, esse illo quo blanditiis deserunt tempora illum, rem sit? Quae, itaque soluta qui sint sed unde. Temporibus, mollitia aut facere deleniti tempore soluta vitae.
-        </div>
+        </section>
       </div>
 
       <div class="card">
-        <div class="card__details">
+        <section class="card__details">
           <div class="title">Fully Responsive Page With Reveal Animations</div>
           <div class="icon">
             <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,35 +280,70 @@
           <a href="https://github.com/Re1nGer/ReactSinglePagePractice" target="_blank" rel="noopener noreferrer" class="btn">
             View On Github
           </a>
-        </div>
-        <div class="card__description">
+        </section>
+        <section class="card__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident qui necessitatibus molestias corporis non ipsum dolorum totam quibusdam ratione architecto, culpa earum accusantium impedit atque vitae, esse illo quo blanditiis deserunt tempora illum, rem sit? Quae, itaque soluta qui sint sed unde. Temporibus, mollitia aut facere deleniti tempore soluta vitae.
-        </div>
+        </section>
       </div>
 
     </section>
 
     <section id="contacts" class="contacts">
-      <h1 class="works__title">Contact Me</h1>
+      <h1 class="contacts__title">Contact Me</h1>
+      <div class="linebreak"></div>
       <form class="contacts__form">
+        <div class="contacts__form-title">
+          Contact
+        </div>
+        <div class="contacts__general">
+          <span>General Inquiries</span>
+          <span>bekjonibr@gmail.com</span>
+        </div>
+        <div class="contacts__send">
+
+        </div>
+        <div class="contacts__input">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="contacts__name" placeholder="Name" />
+        </div>
         <div class="contacts__input">
           <label for="email">Email</label>
-          <input type="text" id="email" class="contacts__email" />
+          <input type="text" id="email" class="contacts__email" placeholder="Email" />
         </div>
 
         <div class="contacts__input">
           <label for="message">Message</label>
-          <input type="text" id="message" class="contacts__message" />
+          <textarea type="text" id="message" class="contacts__message" rows="15" placeholder="Message"></textarea>
         </div>
 
         <div class="contacts__button-wrapper">
           <button type="submit" class="contacts__button">Submit</button>
         </div>
-
       </form>
+
     </section>
 
+    <footer class="footer"></footer>
+
     <script type="text/javascript" defer>
+
+      document.onmouseover = () => applyCursorRippleEffect(event); 
+
+      function applyCursorRippleEffect(e) {
+        setTimeout(() => {
+          const ripple = document.createElement("div");
+
+          ripple.className = "ripple";
+          document.body.appendChild(ripple);
+
+          ripple.style.left = `${e.clientX}px`;
+          ripple.style.top = `${e.clientY}px`; 
+
+          ripple.style.animation = "ripple-effect .4s  linear";
+          ripple.onanimationend = () => document.body.removeChild(ripple);
+        }, 200);
+      }
+
 
       const tl = gsap.timeline();
 
@@ -335,7 +373,7 @@
 
       flickeringToTimeline.from('#to', { duration: 2, opacity: 0, ease: 'rough' });
 
-       tl.from(".left-container", {
+      tl.from(".left-container", {
         duration: 1,
         width: "0",
         ease: "expo.out"
@@ -368,49 +406,47 @@
         y: '0',
         ease: "expo.inOut"
       }, "-=2")
-      .from(".switch__lan", {
-        duration: 2,
-        opacity: '0',
-        ease: "power2.in"
-      }, "-=2") 
-      .from(".logo", {
-        duration: 2,
-        y: 20,
-        opacity: 0,
-        ease: "expo.inOut"
-      }, "-=1.5") // start after 1.5 seconds delay
       .from(".info", {
         duration: 2,
         y: 50,
         opacity: 0,
         scale: 2.5,
         ease: "expo.inOut"
-      }, "-=1.5") // start after 1.5 seconds delay
+      }, "-=1.5")
       .from(".story", {
         duration: 2,
         y: 20,
         opacity: 0,
         ease: "expo.inOut"
-      }, "-=2.5") // start after 2.5 seconds delay
+      }, "-=2.5")
       .from(".great", {
         duration: 2,
         opacity: 0,
         ease: "expo.inOut"
-      }, "-=3") // start after 3 seconds delay
-      .from(".menu", {
-        duration: 2,
-        y: 20,
-        opacity: 0,
-        rotation: 90,
-        ease: "expo.inOut"
-      }, "-=3.5") // start after 3.5 seconds delay
+      }, "-=3") 
       .from(".social ul", {
         duration: 2,
         opacity: 0,
         y: 20,
         ease: "expo.inOut",
         stagger: 0.1
-      }, "-=3.8"); // start after 3.8 seconds delay
+      }, "-=3.8");
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const scrollTimeline = gsap.timeline();
+
+        gsap.utils.toArray("section").forEach((element, index) => {
+        gsap.from(element, {
+          opacity: 0,
+          duration: 1,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: element,
+            toggleActions: "play reverse play reverse"
+          }
+        })
+      });
 
       const editorButton = document.querySelector('.editor__button');
 
@@ -435,12 +471,15 @@
             //tooSimple.textContent = "";
             tooSimple.style.opacity = "0";
         });
+
       }
 
       tryButton.addEventListener('click', function handleEvent(event) {
         const buttonText = this.innerText;
         if (buttonText === "Try") {
-          tl.fromTo('.left-container', { width: "50%" }, { width: "100%", ease: 'none' });
+          tl.fromTo('.left-container', { width: "50%" }, { width: "100%", ease: 'none' })
+          .to('.prompt', { display: 'none', opacity: 0 })
+          .to('.editor__wrapper', { position: 'absolute', top: '1rem' });
           tl.fromTo('.right-container', { width: "50%", opacity: 1 }, { width: "0", opacity: 0 });
         }
         else {
@@ -536,9 +575,19 @@
       function sync_scroll(element) {
         /* Scroll result to scroll coords of event - sync with textarea */
         let result_element = document.querySelector("#highlighting");
+        let result_element_editor = document.querySelector("#editing");
+        let result_element_wrapper = document.querySelector(".editor__wrapper");
         // Get and set x and y
         result_element.scrollTop = element.scrollTop;
         result_element.scrollLeft = element.scrollLeft;
+        //result_element_editor.height = element.scrollTop;
+
+/*      result_element_wrapper.scrollTop = element.scrollTop;
+        result_element_wrapper.scrollLeft = element.scrollLeft;
+
+        result_element_editor.scrollTop = element.scrollTop;
+        result_element_editor.scrollLeft = element.scrollLeft;
+*/
       }
 
     </script>

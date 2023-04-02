@@ -4,35 +4,55 @@
   margin-inline: auto;
   margin-top: 1rem;
   min-height: 800px;
+}
 
+.contacts__title { 
+    text-align: center;
 }
 
 .contacts__form {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    max-width: 500px;
+    max-width: 1000px;
     min-height: 600px;
     border: 2px solid #000;
     gap: 1rem;
     border-radius: .5rem;
+    font-size: var(--fs-500);
+    margin: 1rem 0;
+}
+
+.contacts__form-title {
+    align-items: flex-start;
+    text-transform: uppercase;
+}
+
+.contacts__general {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    gap: .5rem;
 }
 
 .contacts__input {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.contacts__message {
-    border: 2px solid #f6b352;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+.contacts__input label {
+    font-weight: 600;
 }
 
-.contacts__email {
-    border: 2px solid #f6b352;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+.contacts__message, .contacts__email, .contacts__name {
+    padding: 1rem 1rem;
+    width: 100%;
+    font-size: var(--fs-500);
+}
+
+.contacts__message {
+    resize: none;
 }
 
 .contacts__button-wrapper {
@@ -44,16 +64,23 @@
 .contacts__button {
     outline: none;
     border: 1px solid #000;
-    background: #fff;
-    color: #000;
-    border-radius: 1rem;
+    background: #000;
+    color: #fff;
     font-weight: 600;
-    padding: .5rem 2rem;
+    padding: 1rem 2rem;
+    width: 100%;
     cursor: pointer;
     transition: all .2s linear;
+    margin: 1rem 0;
 }
 
 .contacts__button:hover {
-    color: #fff;
-    background: #000;
+    color: #000;
+    background: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+    .contacts { 
+        padding: 0 1rem;
+    }
 }
