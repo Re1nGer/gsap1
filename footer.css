@@ -2,4 +2,24 @@
     width: 100%;
     min-height: 300px;
     background: #000;
+    margin-inline: auto;
+}
+
+.stay {
+    font-size: var(--fs-600);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    justify-content: center;
+    display: flex;
+}
+
+.stay__git {
+    color: var(--white);
+    justify-content: center;
+    text-decoration: none;
+}
+
+.stay__git svg {
+    fill: var(--white);
 }
