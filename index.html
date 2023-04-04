@@ -23,67 +23,28 @@
 
   <body>
     <script src="./assets/prism.js"></script>
-
     <div class="containers">
-
-      <div class="left-container">
-
-        <div class="pre__highlight prompt">
-          <h2 style="color:#fff;">Here's some prompt for your seniours</h2>
-          <pre>
-            <code class="highlight language-powershell">
-Given a string num that contains only digits and an integer target,
-return all possibilities to insert the binary operators '+', '-', and/or '*'
-between the digits of num so that the resultant expression evaluates to the target value.
-Note that operands in the returned expressions should not contain leading zeros.
-            </code>
-          </pre>
-        </div>
-
-  <!--       <h2 style="color: #fff;">Here's your solution.... welp</h2> -->
-        <div>
-          <button class="prompt__try">Try</button>
-        </div>
-        <div class="editor__wrapper">
-          <textarea id="editing"
-            oninput="update(this.value); sync_scroll(this);"
-            onscroll="sync_scroll(this);"
-            onkeydown="check_tab(this, event)"
-            spellcheck="false"></textarea>
-
-          <pre id="highlighting" aria-hidden="true">
-            <code id="highlighting-content" class="code language-python"></code>
-          </pre>
-        </div>
-
-        <div>
-          <button class="editor__button" onclick="sendCode()">Run Code</button>
-        </div>
-
-        <div class="output__wrapper">
-          <pre area-hidden="true">
-            <code id="output__window" class="language-powershell"></code>
-          </pre>
-        </div>
-      </div>
-      <div id="drag-resize"></div>
 
       <div class="right-container">
         <div class="right__inner">
-          <nav class="nav">
-            <span id="too__simple-huh">Too simple, huh ?</span>
-            <ul class="nav__links-wrapper">
-              <li class="nav__link"><a href="#beatanyone">Skills</a></li>
-              <li class="nav__link"><a href="#works">Works</a></li>
-              <li class="nav__link"><a href="#contacts">Contacts</a></li>
-              <li class="nav__link"><a href="#aboutme">About me</a></li>
-            </ul>
+          <div class="pre__highlight prompt">
+            <h2 style="color:#000;">Here's some prompt for your seniors</h2>
+            <pre>
+              <code class="highlight language-powershell">
+  Given a string num that contains only digits and an integer target,
+  return all possibilities to insert the binary operators '+', '-', and/or '*'
+  between the digits of num so that the resultant expression evaluates to the target value.
+  Note that operands in the returned expressions should not contain leading zeros.
 
-            <a class="github__link" href="https://github.com/Re1nGer" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+  Example 1:
+  Input: num = "123", target = 6
+  Output: ["1*2*3","1+2+3"]
+  Explanation: Both "1*2*3" and "1+2+3" evaluate to 6.
 
-          </nav>
+              </code>
+            </pre>
+          </div>
+
           <div class="story">
             <div class="story__wrapper">
               <div id="because">
@@ -104,6 +65,47 @@ Note that operands in the returned expressions should not contain leading zeros.
               </h2>
             </div>
             </div>
+
+          <nav class="nav">
+            <span id="too__simple-huh">Too simple, huh ?</span>
+            <ul class="nav__links-wrapper">
+              <li class="nav__link"><a href="#beatanyone">Skills</a></li>
+              <li class="nav__link"><a href="#works">Works</a></li>
+              <li class="nav__link"><a href="#contacts">Contacts</a></li>
+              <li class="nav__link"><a href="#aboutme">About me</a></li>
+            </ul>
+            <a class="github__link" href="https://github.com/Re1nGer" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </nav>
+          
+        </div>
+
+      </div>
+
+      <div id="drag-resize"></div>
+
+      <div class="left-container">
+        <div class="editor__wrapper">
+          <textarea id="editing"
+            oninput="update(this.value); sync_scroll(this);"
+            onscroll="sync_scroll(this);"
+            onkeydown="check_tab(this, event)"
+            spellcheck="false"></textarea>
+
+          <pre id="highlighting" aria-hidden="true">
+            <code id="highlighting-content" class="code language-python"></code>
+          </pre>
+        </div>
+
+        <div>
+          <button class="editor__button" onclick="sendCode()">Run Code</button>
+        </div>
+
+        <div class="output__wrapper">
+          <pre area-hidden="true">
+            <code id="output__window" class="language-powershell"></code>
+          </pre>
         </div>
       </div>
 
@@ -349,6 +351,7 @@ Note that operands in the returned expressions should not contain leading zeros.
       const rightContainer = document.querySelector('.right-container');
 
       let initWidth = leftContainer.offsetWidth;
+
       let rightContainerInitWidth = rightContainer.offsetWidth;
 
       let lock = false;
@@ -362,9 +365,8 @@ Note that operands in the returned expressions should not contain leading zeros.
 
       window.addEventListener('mousemove', function handleEvent(event) {
         if (lock) {
-          leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
-          //rightContainer.style.width = `${rightContainerInitWidth - event.clientX}px`;
-          rightContainer.style.width = `${(window.innerWidth - leftContainer.offsetWidth) / window.innerWidth * 100}%`;
+          rightContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
+          leftContainer.style.width = `${(window.innerWidth - rightContainer.offsetWidth) / window.innerWidth * 100}%`;
           console.log(initWidth, event.clientX - initWidth)
           widthOnUp = event.clientX;
         }
@@ -376,6 +378,26 @@ Note that operands in the returned expressions should not contain leading zeros.
         lock = false;
         widthOnUp = event.clientX;
       });
+
+      //for mobile resize
+      windowResizeElement.addEventListener('touchstart', function handleEvent(event) {
+        lock = true;
+        widthOnUp = event.clientX;
+      });
+
+      window.ontouchmove = function handleEvent(event) {
+        if (lock) {
+          leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
+          widthOnUp = event.clientX;
+        }
+      };
+
+      window.ontouchend = function handleEvent(event) {
+        lock = false;
+        widthOnUp = event.clientX;
+      };
+
+      window.ontouchcancel = function () { lock = false }
 
       //document.onmouseover = () => applyCursorRippleEffect(event); 
 
@@ -515,22 +537,6 @@ Note that operands in the returned expressions should not contain leading zeros.
 
       }
 
-      tryButton.addEventListener('click', function handleEvent(event) {
-        const buttonText = this.innerText;
-        if (buttonText === "Try") {
-          tl.fromTo('.left-container', { width: "50%" }, { width: "100%", ease: 'none' })
-          .to('.prompt', { display: 'none', opacity: 0 })
-          .to('.editor__wrapper', { position: 'absolute', top: '1rem' });
-          tl.fromTo('.right-container', { width: "50%", opacity: 1 }, { width: "0", opacity: 0 });
-        }
-        else {
-          tl.fromTo('.left-container', { width: "100%" }, {width: "50%"});
-          tl.fromTo('.right-container', { width: "0", opacity: 0 }, { width: "55%", opacity: 1 });
-        }
-        this.innerText = this.innerText === "Try" ? "Back" : "Try";
-
-      });
-
       var t2 = gsap.timeline({ repeat: -1, repeatDelay: .5 });
 
       t2.from('.arrow', { y: -10, stagger: .2 });
@@ -562,13 +568,22 @@ Note that operands in the returned expressions should not contain leading zeros.
 
           outputNode.innerText = String(response.output || response.error).trim();
 
-          const testsFailed = response.output.split("\n").some(item => item === 'False');
+          const tests = response.output.split("\n");
+
+          const testsFailed = tests.some(item => item.contains('Failed'));
 
           if (!response.error && !testsFailed) {
-            outputNode.innerText = "wow wow";
+            let successfulTests = "";
+            for (const test of tests)
+              successfulTests+=`${test}\n`;
+            outputNode.innerText = successfulTests;
           }
+
           else if (!response.error && testsFailed) {
-            outputNode.innerText = wrongPrompts[Math.floor(Math.random()*wrongPrompts.length)];;
+            let failedTests = "";
+            for (const test of testsFailed)
+              failedTests+=`\n${test}\n`;
+            outputNode.innerText = failedTests;
           }
 
           Prism.highlightElement(outputNode);
@@ -621,7 +636,6 @@ Note that operands in the returned expressions should not contain leading zeros.
         // Get and set x and y
         result_element.scrollTop = element.scrollTop;
         result_element.scrollLeft = element.scrollLeft;
-
       }
     </script>
   </body>

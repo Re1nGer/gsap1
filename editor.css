@@ -24,9 +24,9 @@
 
 #editing, #highlighting, #highlighting * {
   /* Also add text styles to highlighing tokens */
-  font-size: 15pt;
+  font-size: var(--fs-400);
   font-family: monospace;
-  line-height: 20pt;
+  line-height: 1.6;
   tab-size: 2;
 }
 
