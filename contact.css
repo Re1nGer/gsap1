@@ -1,8 +1,13 @@
 .contacts {
+    width: 100%;
+    background: var(--white);
+}
+
+.contacts__inner {
   max-width: 1000px;
   width: 100%;
   margin-inline: auto;
-  margin-top: 1rem;
+  padding-top: 1rem;
   min-height: 800px;
 }
 

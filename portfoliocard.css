@@ -9,6 +9,8 @@
   transition: transform 0.3s linear;
 }
 
+/* add card animation on cards */
+
 .card__details {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   align-self: flex-start;
