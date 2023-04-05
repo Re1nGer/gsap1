@@ -9,11 +9,11 @@
 }
 
 :root {
-  --black: #1A1C20;
-  --white: #F4F4F4;
+  --black: #1a1c20;
+  --white: #f4f4f4;
   --primary: #f6b352;
 
-  --fs-300: .725rem;
+  --fs-300: 0.725rem;
   --fs-400: 1rem;
   --fs-500: 1.5rem;
   --fs-600: 1.75rem;
@@ -22,13 +22,12 @@
 
 @media screen and (max-width: 1250px) {
   :root {
-    --fs-300: .4rem;
-    --fs-400: .7em;
+    --fs-300: 0.4rem;
+    --fs-400: 0.7em;
     --fs-500: 1rem;
     --fs-600: 1.5rem;
     --fs-800: 4rem;
   }
-
 }
 
 .ripple {
@@ -42,25 +41,37 @@
 }
 
 @keyframes ripple-effect {
-   to {
-      transform:scale(15);
-      opacity: 0.01;
-   }
+  to {
+    transform: scale(15);
+    opacity: 0.01;
+  }
 }
 
 .containers {
   display: flex;
-  height: 100vh;
+  height: 1000px;
   overflow: hidden;
 }
 
 .left-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: relative;
+  background-color: #fff;
+  width: 60%;
+  user-select: none;
+  max-height: 1000px;
+}
+
+.right-container {
   position: relative;
   background-color: black;
   color: white;
   max-width: 4000px;
   min-width: 0;
-  width: 60%;
+  width: 50%;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -68,37 +79,28 @@
   overflow: hidden;
 }
 
-.right-container {
-  position: relative;
-  background-color: #fff;
-  width: 50%;
-  height: 100%;
-  overflow: auto;
-  user-select: none;
-}
-
 .right__inner {
   height: 100%;
 }
 
 #drag-resize {
-  width: .5rem;
+  width: 0.5rem;
   height: 100%;
   max-height: 1000px;
   background: var(--primary);
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   cursor: col-resize;
 }
 
 #drag-resize:hover {
   width: 1rem;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .editor__wrapper {
   position: relative;
   width: 100%;
-  min-height:  200px;
+  min-height: 200px;
   max-height: 1920px;
   left: 0;
 }
@@ -110,15 +112,15 @@
 
 .editor__button {
   position: relative;
-  left: .5rem;
+  left: 0.5rem;
   outline: none;
   border: none;
   background: #fff;
   color: #000;
   padding: 1rem 1.5rem;
   font-weight: 500;
-  transition: all .2s linear;
-  border-radius: .5rem;
+  transition: all 0.2s linear;
+  border-radius: 0.5rem;
   cursor: pointer;
   z-index: 10;
 }
@@ -136,7 +138,7 @@
   left: 50%;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .scroller__parent--up {
@@ -152,7 +154,7 @@
   width: 100%;
   display: inline-block;
   padding: 6px;
-  transition: all .5s linear;
+  transition: all 0.5s linear;
   position: relative;
   cursor: grabbing;
 }
@@ -225,12 +227,12 @@
 
 #because h1 {
   border-radius: 1.5rem;
-  transition: all .5s linear;
+  transition: all 0.5s linear;
   font-size: var(--fs-800);
 }
 
 #because h1:hover {
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   box-shadow: 7px 29px 49px 0px rgba(0, 0, 0, 0.5);
   transform: rotate(-15deg);
 }
@@ -277,7 +279,7 @@
   position: relative;
   transform: translateY(20px);
   background: black;
-/*   for now  */
+  /*   for now  */
   display: none;
 }
 
@@ -346,11 +348,10 @@
 .nav {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   justify-content: space-between;
   position: relative;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
 .nav__link {
@@ -378,19 +379,19 @@
   color: #000;
   font-size: 12px;
   opacity: 0;
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
 }
 
 .nav__link::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 2px;
   background: #000;
-  bottom: -.2rem;
+  bottom: -0.2rem;
   left: 0;
   opacity: 0;
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
 }
 
 .nav__link:hover::after {
@@ -409,16 +410,16 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 
-.contacts__title, .works__title {
+.contacts__title,
+.works__title {
   margin: 1rem 0;
 }
 
 /* Move the textarea in front of the result */
 @media screen and (max-width: 1000px) {
-
   .left-container {
     width: 100%;
   }
@@ -438,8 +439,9 @@
   .output__wrapper {
     width: 100%;
   }
-  
-  #editing, #highlighting {
+
+  #editing,
+  #highlighting {
     width: 100%;
   }
 
