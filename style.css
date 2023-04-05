@@ -13,7 +13,7 @@
   --white: #f4f4f4;
   --primary: #f6b352;
 
-  --fs-300: 0.725rem;
+  --fs-300: 0.8rem;
   --fs-400: 1rem;
   --fs-500: 1.5rem;
   --fs-600: 1.75rem;
@@ -49,8 +49,9 @@
 
 .containers {
   display: flex;
-  height: 1000px;
+  height: clamp(1000px, 15vh + 1rem, 2000px);
   overflow: hidden;
+  max-height: 2000px;
 }
 
 .left-container {
@@ -105,6 +106,17 @@
   left: 0;
 }
 
+.output__resize {
+  width: 100%;
+  height: 0.2rem;
+  max-height: 1000px;
+  background: var(--primary);
+  transition: all 0.2s linear;
+  margin: 1rem 0;
+  cursor: col-resize;
+  align-self: flex-end;
+}
+
 .output__wrapper {
   position: relative;
   width: 40%;
@@ -117,7 +129,7 @@
   border: none;
   background: #fff;
   color: #000;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-weight: 500;
   transition: all 0.2s linear;
   border-radius: 0.5rem;

@@ -1,4 +1,5 @@
-#editing, #highlighting {
+#editing,
+#highlighting {
   /* Both elements need the same text and space styling so they are directly on top of each other */
   margin: 10px;
   padding: 10px;
@@ -9,6 +10,7 @@
 }
 
 #editing {
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -22,15 +24,19 @@
   z-index: 0;
 }
 
-#editing, #highlighting, #highlighting * {
+#editing,
+#highlighting,
+#highlighting * {
   /* Also add text styles to highlighing tokens */
-  font-size: var(--fs-400);
+  font-size: var(--fs-300);
+  overflow: hidden;
   font-family: monospace;
   line-height: 1.6;
   tab-size: 2;
 }
 
-#editing, #highlighting {
+#editing,
+#highlighting {
   /* In the same place */
   position: absolute;
   top: 0;
@@ -46,7 +52,8 @@
 }
 
 /* Can be scrolled */
-#editing, #highlighting {
+#editing,
+#highlighting {
   overflow: auto;
   white-space: nowrap;
 }
@@ -56,8 +63,8 @@
 }
 
 pre[class*="language-"] {
-  padding: .4em .8em;
-  margin: .5em 0;
+  padding: 0.4em 0.8em;
+  margin: 0.5em 0;
   overflow: auto;
   background: black; /* - WebCoder49 */
 }

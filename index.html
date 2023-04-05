@@ -103,11 +103,11 @@
           </pre>
         </div>
 
+        <div class="output__wrapper">
         <div>
           <button class="editor__button" onclick="sendCode()">Run Code</button>
         </div>
-
-        <div class="output__wrapper">
+        <div class="output__resize"></div>
           <pre area-hidden="true">
             <code id="output__window" class="language-powershell"></code>
           </pre>
@@ -631,12 +631,15 @@
       function sync_scroll(element) {
         /* Scroll result to scroll coords of event - sync with textarea */
         let result_element = document.querySelector("#highlighting");
-        let result_element_editor = document.querySelector("#editing");
+
         let result_element_wrapper = document.querySelector(".editor__wrapper");
         // Get and set x and y
         result_element.scrollTop = element.scrollTop;
         result_element.scrollLeft = element.scrollLeft;
+
+        result_element_wrapper.style.height = result_element.offsetHeight + 'px';
       }
+
     </script>
   </body>
 </html>
