@@ -128,11 +128,10 @@
             <a href="https://cssbattle.dev/" class="ag-courses-item_link">
               <div class="ag-courses-item_bg"></div>
               <div class="ag-courses-item_title">
-                CSS Battles
+                ASP.NET
               </div>
-              <div></div>
               <div class="ag-courses-item_date-box">
-                I'm going to beat them all in CSS battles
+                2 years of experience in ASP.NET C#
               </div>
             </a>
           </div>
@@ -147,9 +146,9 @@
               <div class="ag-courses-item_title">
                 LeetCode Challenges
               </div>
-              <div></div>
               <div class="ag-courses-item_date-box">
-                Check out my profile at to see my achievments
+                Check out my profile at <div class="ag-courses-item_date"> leetcode </div>
+                 to see my achievments
               </div>
             </a>
           </div>
@@ -164,7 +163,6 @@
                 <div class="ag-courses-item_title">
                   JavaScript Knowledge
                 </div>
-                <div></div>
                 <div class="ag-courses-item_date-box">
                   What is a generator function ? 
                   How is it used in combination with Promises to secure asynchronisity of JS
@@ -185,7 +183,6 @@
               <div class="ag-courses-item_title">
                 System Design
               </div>
-              <div></div>
               <div class="ag-courses-item_date-box">
                 What would be the most optimal trade-offs given the constraints ?
               </div>
@@ -196,9 +193,6 @@
     </div>
 
     <section id="works" class="works">
-<!--       <h1 class="works__title">
-        Works
-      </h1> -->
       <div class="card">
         <section class="card__details">
           <div class="title">Full Stack Social Media Application</div>
@@ -209,10 +203,8 @@
           <div class="features">
             <ul>
               <li><span>TS</span>React.js</li>
-              <li><span>BEM</span>Methodology</li>
               <li><span>CSS</span>HTML</li>
               <li><span>ASP.NET</span>API</li>
-              <li><span>Signal Hub</span>Websockets</li>
               <li><span>MongoDb</span>NOSQL</li>
               <li><span>Firebase</span>Auth</li>
             </ul>
@@ -597,6 +589,10 @@
           console.log(error);
         } 
       }
+
+      const cards = document.getElementsByName('card');
+
+      const cardsTimeline = gsap.timeline();
 
       let highlightText = document.getElementById('editing');
 
