@@ -88,6 +88,8 @@
   width: 0.5rem;
   height: 100%;
   max-height: 1000px;
+  z-index: 100;
+  position: relative;
   background: var(--primary);
   transition: all 0.2s linear;
   cursor: col-resize;

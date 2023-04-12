@@ -28,7 +28,7 @@
       <div class="left-container">
         <div class="right__inner">
           <div class="pre__highlight prompt">
-            <h2 style="color:#000;">Here's some prompt for your seniors</h2>
+            <h2 style="color:#000;">Here's some prompt for 'rockstar' developers</h2>
             <pre>
               <code class="highlight language-powershell">
   Given a string num that contains only digits and an integer target,
@@ -365,8 +365,11 @@
         if (lock) {
           leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
           rightContainer.style.width = `${(window.innerWidth - leftContainer.offsetWidth) / window.innerWidth * 100}%`;
-          console.log(initWidth, event.clientX - initWidth)
           widthOnUp = event.clientX;
+          if (leftContainer.offsetWidth === 0)
+            leftContainer.style.opacity = 0;
+          else
+            leftContainer.style.opacity = 1;
         }
       });
 
@@ -385,7 +388,12 @@
 
       window.ontouchmove = function handleEvent(event) {
         if (lock) {
-          leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
+          leftContainer.style.width = `${event.clientX}px`;
+          console.log(leftContainer.offsetWidth)
+          if (leftContainer.style.width === '0px')
+            leftContainer.style.display = 'none'
+          else 
+            leftContainer.style.display = 'flex'
           widthOnUp = event.clientX;
         }
       };
