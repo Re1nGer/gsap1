@@ -82,11 +82,6 @@
         
 
       </div>
-<!--       <div class="scroller__parent">
-        <i class="arrow down" draggable="true"></i>
-        <i class="arrow down" draggable="true"></i>
-        <i class="arrow down" draggable="true"></i>
-      </div> -->
 
       <div id="drag-resize"></div>
 
@@ -168,7 +163,7 @@
                   How is it used in combination with Promises to secure asynchronisity of JS
                 </div>
                 <div class="ag-courses-item_date">
-                  generator function ?
+                  Guess I know the answer ?
                 </div>
               </a>
             </div>
@@ -301,9 +296,7 @@
             <span>General Inquiries</span>
             <span>bekjonibr@gmail.com</span>
           </div>
-          <div class="contacts__send">
-
-          </div>
+          <div class="contacts__send"></div>
           <div class="contacts__input">
             <label for="name">Name</label>
             <input type="text" id="name" class="contacts__name" placeholder="Name" />
@@ -322,9 +315,7 @@
             <button type="submit" class="contacts__button">Submit</button>
           </div>
         </form>
-
       </div>
-
     </section>
 
     <footer class="footer">
@@ -557,9 +548,11 @@
         try {
           const textCode = document.getElementById('highlighting-content');
 
+          const apiUrl = "https://code-executor.onrender.com";
+
           const outputNode = document.getElementById('output__window');
 
-          const request = await fetch("http://localhost:3000", {
+          const request = await fetch(apiUrl, {
              method: "POST", body: new URLSearchParams({
               'language': 'py',
               'code': textCode.innerText
