@@ -160,25 +160,6 @@
   bottom: unset;
 }
 
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  height: 100%;
-  max-width: 150px;
-  width: 100%;
-  display: inline-block;
-  padding: 6px;
-  transition: all 0.5s linear;
-  position: relative;
-  cursor: grabbing;
-}
-
-.arrow:hover {
-  border: solid gray;
-  border-width: 0 3px 3px 0;
-  scale: 2.5;
-}
-
 .up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135eg);
@@ -467,4 +448,21 @@
     justify-content: center;
     margin-top: 1rem;
   }
+
+  .nav__links-wrapper {
+    gap: 2rem;
+  }
 }
+
+@media screen and (max-width: 500px) {
+
+  .nav {
+    padding: .5rem;
+  }
+
+  .nav__links-wrapper {
+    gap: 1rem;
+  }
+
+}
+

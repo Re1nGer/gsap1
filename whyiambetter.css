@@ -33,4 +33,12 @@
 .beatanyone__right {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
+}
+
+
+@media screen and (max-width: 500px) {
+  .beatanyone__right {
+    display: block;
+  }
 }
