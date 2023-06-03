@@ -124,6 +124,12 @@
   width: 40%;
 }
 
+.output__btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .editor__button {
   position: relative;
   left: 0.5rem;
@@ -137,6 +143,29 @@
   border-radius: 0.5rem;
   cursor: pointer;
   z-index: 10;
+}
+
+.editor__back {
+  display: none;
+  outline: none;
+  border: 1px solid #f6b352;
+  background: transparent;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s linear;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.editor__back:hover {
+  border: 1px solid #fff;
+  color: #f6b352;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s linear;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .editor__button:hover {
@@ -252,6 +281,7 @@
   font-size: 2rem;
   display: flex;
   align-items: baseline;
+  margin: 2rem 0;
 }
 
 .story h1 {
@@ -487,6 +517,9 @@
 @media screen and (max-width: 1000px) {
   .try__btn {
     display: flex;
+  }
+  .editor__back {
+    display: block;
   }
 }
 

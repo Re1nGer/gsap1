@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Lightweight version of my portfolio">
   <meta name="keywords" content="Portfolio, HTML, CSS, JavaScript">
-  <title>Showcase</title>
+  <title>There is no why</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="cards.css" />
   <link rel="stylesheet" href="editor.css" />
@@ -41,7 +41,7 @@
       <div class="right__inner">
         <div class="pre__highlight prompt">
           <h3 style="color:#000;">
-            Here's some prompt for 'rockstar' developers
+          Prompt for 'rockstar' developers
             </h2>
             <pre>
               <code class="highlight language-powershell">
@@ -84,7 +84,6 @@
         </div>
       </div>
 
-
       <nav class="nav">
         <span id="too__simple-huh">Too simple, huh ?</span>
         <ul class="nav__links-wrapper">
@@ -114,8 +113,9 @@
       </div>
 
       <div class="output__wrapper">
-        <div>
+        <div class="output__btn-wrapper">
           <button class="editor__button" onclick="sendCode()">Run Code</button>
+          <button class="editor__back">Go Back</button>
         </div>
         <div class="output__resize"></div>
         <div id="output__loader" class="loader"></div>
@@ -135,7 +135,7 @@
     <section class="beatanyone">
       <div>
         <div class="ag-courses_item">
-          <a href="https://cssbattle.dev/" class="ag-courses-item_link">
+          <a href="https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-7.0" target="_blank" rel="noopener noreferrer" class="ag-courses-item_link">
             <div class="ag-courses-item_bg"></div>
             <div class="ag-courses-item_title">
               ASP.NET
@@ -151,7 +151,7 @@
     <section class="beatanyone beatanyone__right">
       <div>
         <div class="ag-courses_item">
-          <a href="http://leetcode.com" rel="noopener" class="ag-courses-item_link">
+          <a href="http://leetcode.com" target="_blank" rel="noopener noreferrer" class="ag-courses-item_link">
             <div class="ag-courses-item_bg"></div>
             <div class="ag-courses-item_title">
               LeetCode Challenges
@@ -168,7 +168,7 @@
     <section class="beatanyone">
       <div>
         <div class="ag-courses_item">
-          <a href="https://github.com/getify/You-Dont-Know-JS" class="ag-courses-item_link">
+          <a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener noreferrer" class="ag-courses-item_link">
             <div class="ag-courses-item_bg"></div>
             <div class="ag-courses-item_title">
               JavaScript Knowledge
@@ -229,7 +229,7 @@
           other users and share the photos
         </section>
 
-        <a href="#" class="btn">
+        <a href="https://github.com/Re1nGer/SocialApp" target="_blank" rel="noopener noreferrer" class="btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path
               d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -392,13 +392,42 @@
 
       const tryButton = document.querySelector('.try__btn');
 
+      const editorGoBack = document.querySelector('.editor__back');
+
+      const cards = document.getElementsByName('card');
+
+      const cardsTimeline = gsap.timeline();
+
+      const wordMainTimeline = gsap.timeline({ repeat: -1 });
+
+      const cursor = gsap.to('.cursor', { opacity: 0, ease: "power2.inOut", repeat: -1 });
+
       let initWidth = leftContainer.offsetWidth;
+
+      let highlightText = document.getElementById('editing');
 
       let rightContainerInitWidth = rightContainer.offsetWidth;
 
       let lock = false;
 
       let widthOnUp = 0;
+
+      editorGoBack.addEventListener('click', function handleEvent(event) {
+        tl.to(".left-container", {
+            duration: 1,
+            width: `${window.innerWidth}px`,
+            ease: "expo.out"
+        }).to(".right-container", {
+            duration: 1,
+            width: 0,
+            ease: "expo.out"
+        }, "-=1");
+
+        for (let i = 0; i < leftContainer.children.length; i++) {
+          leftContainer.children[i].style.opacity = 1;
+        }
+        window.scrollTo(0, 0);
+      });
 
       windowResizeElement.addEventListener('mousedown', function handleEvent(event) {
         lock = true;
@@ -421,7 +450,7 @@
         rightContainer.style.display = 'flex';
         //remove all children elements of left container
         for (let i = 0; i < leftContainer.children.length; i++) {
-          leftContainer.children[i].style.display = "none";
+          leftContainer.children[i].style.opacity = 0;
         }
         //rightContainer.style.width = `${window.innerWidth}px`;
         //leftContainer.style.width = 0;
@@ -434,6 +463,7 @@
             width: `${window.innerWidth}px`,
             ease: "expo.out"
         }, "-=1");
+        window.scrollTo(0, 0);
       });
 
       window.onmouseup = function () { lock = false }
@@ -452,11 +482,10 @@
       window.ontouchmove = function handleEvent(event) {
         if (lock) {
           leftContainer.style.width = `${event.clientX}px`;
-          console.log(leftContainer.offsetWidth)
           if (leftContainer.style.width === '0px')
-            leftContainer.style.display = 'none'
+            leftContainer.style.opacity = 0;
           else
-            leftContainer.style.display = 'flex'
+            leftContainer.style.opacity = 1
           widthOnUp = event.clientX;
         }
       };
@@ -482,9 +511,6 @@
         "Consciousness"
       ];
 
-      const cursor = gsap.to('.cursor', { opacity: 0, ease: "power2.inOut", repeat: -1 });
-
-      const wordMainTimeline = gsap.timeline({ repeat: -1 });
 
       words.forEach(word => {
         let tl = gsap.timeline({ repeat: 1, yoyo: true, repeatDelay: 1 });
@@ -550,7 +576,6 @@
         link.addEventListener('mouseout', function handleEvent(event) {
           tooSimple.style.opacity = "0";
         });
-
       }
 
       var t2 = gsap.timeline({ repeat: -1, repeatDelay: .5 });
@@ -565,8 +590,6 @@
         try {
 
           outputLoader.style.display = 'block';
-
-          //outputNode.innerHTML = "";
 
           const textCode = document.getElementById('highlighting-content');
 
@@ -618,11 +641,7 @@
         }
       }
 
-      const cards = document.getElementsByName('card');
 
-      const cardsTimeline = gsap.timeline();
-
-      let highlightText = document.getElementById('editing');
 
       highlightText.value = "def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass";
 
@@ -681,26 +700,22 @@
     (function () {
       emailjs.init('TqPhGLEIjB5B43Dk5');
 
-      document.getElementById('contact-form').addEventListener('submit', function (event) {
+      document.getElementById('contact-form').addEventListener('submit', function handleEvent(event) {
         event.preventDefault();
 
-        // Get the form data
-        var formData = {
+        const formData = {
           from_name: document.getElementsByClassName('contacts__name')[0].value,
           from_email: document.getElementsByClassName('contacts__email')[0].value,
           message: document.getElementsByClassName('contacts__message')[0].value
         };
 
-        // Send the email
         emailjs.send('service_7iio16m', 'template_6sgm7rq', formData)
           .then(function (response) {
             console.log('Email sent successfully:', response);
             let success_message_node = document.getElementById('success_message');
-            // Add your success message or redirect the user to a thank you page
             success_message_node.style.display = 'block';
           }, function (error) {
             console.error('Email sending failed:', error);
-            // Add your error message or handle the error accordingly
           });
       });
     })();
