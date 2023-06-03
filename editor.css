@@ -28,7 +28,7 @@
 #highlighting,
 #highlighting * {
   /* Also add text styles to highlighing tokens */
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   overflow: hidden;
   font-family: monospace;
   line-height: 1.6;
@@ -90,6 +90,6 @@ p code {
   width: calc(100% - 32px);
   height: 150px;
   resize: none;
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   padding: 0 2rem;
 }

@@ -14,16 +14,17 @@
   <link rel="stylesheet" href="whyiambetter.css">
   <link rel="stylesheet" href="portfoliocard.css">
   <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="loader.css">
   <link rel="stylesheet" href="footer.css">
   <link href="./assets/prism.css" rel="stylesheet">
-
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/TextPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/EasePack.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 </head>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMLT3SS95M"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -53,7 +54,6 @@
   Input: num = "123", target = 6
   Output: ["1*2*3","1+2+3"]
   Explanation: Both "1*2*3" and "1+2+3" evaluate to 6.
-
               </code>
             </pre>
         </div>
@@ -79,8 +79,12 @@
             </h2>
           </div>
         </div>
-
+        <div class="try">
+          <button class="try__btn">Try Challenge</button>
+        </div>
       </div>
+
+
       <nav class="nav">
         <span id="too__simple-huh">Too simple, huh ?</span>
         <ul class="nav__links-wrapper">
@@ -96,12 +100,9 @@
           </svg>
         </a>
       </nav>
-
-
     </div>
 
     <div id="drag-resize"></div>
-
     <div class="right-container">
       <div class="editor__wrapper">
         <textarea id="editing" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);"
@@ -117,13 +118,13 @@
           <button class="editor__button" onclick="sendCode()">Run Code</button>
         </div>
         <div class="output__resize"></div>
+        <div id="output__loader" class="loader"></div>
         <pre area-hidden="true">
-            <code id="output__window" class="language-powershell"></code>
+            <code id="output__window" class="language-powershell">
+            </code>
           </pre>
       </div>
-
     </div>
-
   </div>
 
   <div id="beatanyone" class="beatanyone__container">
@@ -235,7 +236,6 @@
           </svg>
           View On Github
         </a>
-
       </section>
     </div>
 
@@ -380,127 +380,127 @@
     </section>
   </footer>
 
-  <script type="text/javascript" defer>
+  <script async type="text/javascript">
 
-    //need to think about loader
-    //add another about me section
-    //need to think about 
+      const windowResizeElement = document.querySelector("#drag-resize");
 
-    const windowResizeElement = document.querySelector("#drag-resize");
+      const leftContainer = document.querySelector('.left-container');
 
-    const leftContainer = document.querySelector('.left-container');
+      const rightContainer = document.querySelector('.right-container');
 
-    const rightContainer = document.querySelector('.right-container');
+      const outputLoader = document.querySelector('#output__loader');
 
-    let initWidth = leftContainer.offsetWidth;
+      const tryButton = document.querySelector('.try__btn');
 
-    let rightContainerInitWidth = rightContainer.offsetWidth;
+      let initWidth = leftContainer.offsetWidth;
 
-    let lock = false;
+      let rightContainerInitWidth = rightContainer.offsetWidth;
 
-    let widthOnUp = 0;
+      let lock = false;
 
-    windowResizeElement.addEventListener('mousedown', function handleEvent(event) {
-      lock = true;
-      widthOnUp = event.clientX;
-    });
+      let widthOnUp = 0;
 
-    window.addEventListener('mousemove', function handleEvent(event) {
-      if (lock) {
-        leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
-        rightContainer.style.width = `${(window.innerWidth - leftContainer.offsetWidth) / window.innerWidth * 100}%`;
+      windowResizeElement.addEventListener('mousedown', function handleEvent(event) {
+        lock = true;
         widthOnUp = event.clientX;
-        if (leftContainer.offsetWidth === 0)
-          leftContainer.style.opacity = 0;
-        else
-          leftContainer.style.opacity = 1;
-      }
-    });
+      });
 
-    window.onmouseup = function () { lock = false }
+      window.addEventListener('mousemove', function handleEvent(event) {
+        if (lock) {
+          leftContainer.style.width = `${initWidth + event.clientX - initWidth}px`;
+          rightContainer.style.width = `${(window.innerWidth - leftContainer.offsetWidth) / window.innerWidth * 100}%`;
+          widthOnUp = event.clientX;
+          if (leftContainer.offsetWidth === 0)
+            leftContainer.style.opacity = 0;
+          else
+            leftContainer.style.opacity = 1;
+        }
+      });
 
-    windowResizeElement.addEventListener('mouseup', function handleEvent(event) {
-      lock = false;
-      widthOnUp = event.clientX;
-    });
+      tryButton.addEventListener('click', function handleEvent(event) {
+        rightContainer.style.display = 'flex';
+        //remove all children elements of left container
+        for (let i = 0; i < leftContainer.children.length; i++) {
+          leftContainer.children[i].style.display = "none";
+        }
+        //rightContainer.style.width = `${window.innerWidth}px`;
+        //leftContainer.style.width = 0;
+        tl.to(".left-container", {
+            duration: 1,
+            width: "0",
+            ease: "expo.out"
+        }).to(".right-container", {
+            duration: 1,
+            width: `${window.innerWidth}px`,
+            ease: "expo.out"
+        }, "-=1");
+      });
 
-    //for mobile resize
-    windowResizeElement.addEventListener('touchstart', function handleEvent(event) {
-      lock = true;
-      widthOnUp = event.clientX;
-    });
+      window.onmouseup = function () { lock = false }
 
-    window.ontouchmove = function handleEvent(event) {
-      if (lock) {
-        leftContainer.style.width = `${event.clientX}px`;
-        console.log(leftContainer.offsetWidth)
-        if (leftContainer.style.width === '0px')
-          leftContainer.style.display = 'none'
-        else
-          leftContainer.style.display = 'flex'
+      windowResizeElement.addEventListener('mouseup', function handleEvent(event) {
+        lock = false;
         widthOnUp = event.clientX;
-      }
-    };
+      });
 
-    window.ontouchend = function handleEvent(event) {
-      lock = false;
-      widthOnUp = event.clientX;
-    };
+      //for mobile resize
+      windowResizeElement.addEventListener('touchstart', function handleEvent(event) {
+        lock = true;
+        widthOnUp = event.clientX;
+      });
 
-    window.ontouchcancel = function () { lock = false }
+      window.ontouchmove = function handleEvent(event) {
+        if (lock) {
+          leftContainer.style.width = `${event.clientX}px`;
+          console.log(leftContainer.offsetWidth)
+          if (leftContainer.style.width === '0px')
+            leftContainer.style.display = 'none'
+          else
+            leftContainer.style.display = 'flex'
+          widthOnUp = event.clientX;
+        }
+      };
 
-    //document.onmouseover = () => applyCursorRippleEffect(event); 
+      window.ontouchend = function handleEvent(event) {
+        lock = false;
+        widthOnUp = event.clientX;
+      };
 
-    function applyCursorRippleEffect(e) {
-      setTimeout(() => {
-        const ripple = document.createElement("div");
+      window.ontouchcancel = function () { lock = false }
 
-        ripple.className = "ripple";
+      const tl = gsap.timeline();
 
-        document.body.appendChild(ripple);
+      const words = [
+        "Development",
+        "Life",
+        "Despair",
+        "Happiness",
+        "Faith",
+        "Illussion",
+        "Dreams",
+        "Love",
+        "Consciousness"
+      ];
 
-        ripple.style.left = `${e.clientX}px`;
+      const cursor = gsap.to('.cursor', { opacity: 0, ease: "power2.inOut", repeat: -1 });
 
-        ripple.style.top = `${e.clientY}px`;
+      const wordMainTimeline = gsap.timeline({ repeat: -1 });
 
-        ripple.style.animation = "ripple-effect .4s  linear";
-        ripple.onanimationend = () => document.body.removeChild(ripple);
-      }, 200);
-    }
+      words.forEach(word => {
+        let tl = gsap.timeline({ repeat: 1, yoyo: true, repeatDelay: 1 });
+        tl.to('.text', { duration: 1.5, text: word });
+        wordMainTimeline.add(tl);
+      });
 
-    const tl = gsap.timeline();
+      const flickeringToTimeline = gsap.timeline({ repeat: -1 });
 
-    const words = [
-      "Development",
-      "Life",
-      "Despair",
-      "Happiness",
-      "Faith",
-      "Illussion",
-      "Dreams",
-      "Love",
-      "Consciousness"
-    ];
+      flickeringToTimeline.from('#to', { duration: 2, opacity: 0, ease: 'rough' });
 
-    const cursor = gsap.to('.cursor', { opacity: 0, ease: "power2.inOut", repeat: -1 });
-
-    const wordMainTimeline = gsap.timeline({ repeat: -1 });
-
-    words.forEach(word => {
-      let tl = gsap.timeline({ repeat: 1, yoyo: true, repeatDelay: 1 });
-      tl.to('.text', { duration: 1.5, text: word });
-      wordMainTimeline.add(tl);
-    });
-
-    const flickeringToTimeline = gsap.timeline({ repeat: -1 });
-
-    flickeringToTimeline.from('#to', { duration: 2, opacity: 0, ease: 'rough' });
-
-    tl.from(".left-container", {
-      duration: 1,
-      width: "0",
-      ease: "expo.out"
-    })
+      tl.from(".left-container", {
+        duration: 1,
+        width: "0",
+        ease: "expo.out"
+      })
       .from(".code", {
         duration: 2,
         y: '0',
@@ -516,152 +516,165 @@
         duration: 2,
         opacity: 0,
         ease: "expo.inOut"
-      }, "-=3")
+      }, "-=3");
 
-    gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(ScrollTrigger);
 
-    const scrollTimeline = gsap.timeline();
+      const scrollTimeline = gsap.timeline();
 
-    gsap.utils.toArray("section").forEach((element, index) => {
-      gsap.from(element, {
-        opacity: 0,
-        duration: 1,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: element,
-          toggleActions: "play reverse play reverse"
-        }
-      })
-    });
-
-    const editorButton = document.querySelector('.editor__button');
-
-    const links = document.getElementsByClassName('nav__link');
-
-    const tooSimple = document.getElementById('too__simple-huh');
-
-    const tryButton = document.querySelector('.prompt__try');
-
-    for (const link of links) {
-
-      link.addEventListener('mouseover', function handleEvent(event) {
-        tooSimple.style.opacity = "1";
-        tooSimple.style.transform = 'rotate(-15deg)';
-      });
-
-      link.addEventListener('mouseout', function handleEvent(event) {
-        //tooSimple.textContent = "";
-        tooSimple.style.opacity = "0";
-      });
-
-    }
-
-    var t2 = gsap.timeline({ repeat: -1, repeatDelay: .5 });
-
-    const wrongPrompts = [
-      "Welp this ain't how it's working !",
-      "Not a right answer",
-      "Not that much of a seniour, huh ?"
-    ];
-
-    async function sendCode() {
-      try {
-        const textCode = document.getElementById('highlighting-content');
-
-        const apiUrl = "https://code-executor.onrender.com";
-
-        const outputNode = document.getElementById('output__window');
-
-        const request = await fetch(apiUrl, {
-          method: "POST", body: new URLSearchParams({
-            'language': 'py',
-            'code': textCode.innerText
-          }), headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+      gsap.utils.toArray("section").forEach((element, index) => {
+        gsap.from(element, {
+          opacity: 0,
+          duration: 1,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: element,
+            toggleActions: "play reverse play reverse"
           }
+        })
+      });
+
+      const editorButton = document.querySelector('.editor__button');
+
+      const links = document.getElementsByClassName('nav__link');
+
+      const tooSimple = document.getElementById('too__simple-huh');
+
+      for (const link of links) {
+
+        link.addEventListener('mouseover', function handleEvent(event) {
+          tooSimple.style.opacity = "1";
+          tooSimple.style.transform = 'rotate(-15deg)';
         });
 
-        const response = await request.json();
+        link.addEventListener('mouseout', function handleEvent(event) {
+          tooSimple.style.opacity = "0";
+        });
 
-        outputNode.innerHTML = "";
+      }
 
-        outputNode.innerText = String(response.output || response.error).trim();
+      var t2 = gsap.timeline({ repeat: -1, repeatDelay: .5 });
 
-        const tests = response.output.split("\n");
+      const wrongPrompts = [
+        "Welp this ain't how it's working !",
+        "Not a right answer",
+        "Not that much of a seniour, huh ?"
+      ];
 
-        const testsFailed = tests.some(item => item.contains('Failed'));
+      async function sendCode() {
+        try {
 
-        if (!response.error && !testsFailed) {
-          let successfulTests = "";
-          for (const test of tests)
-            successfulTests += `${test}\n`;
-          outputNode.innerText = successfulTests;
+          outputLoader.style.display = 'block';
+
+          //outputNode.innerHTML = "";
+
+          const textCode = document.getElementById('highlighting-content');
+
+          const apiUrl = "https://code-executor.onrender.com";
+
+          const outputNode = document.getElementById('output__window');
+
+          outputNode.innerText = "";
+
+          const request = await fetch(apiUrl, {
+            method: "POST", body: new URLSearchParams({
+              'language': 'py',
+              'code': textCode.innerText
+            }), headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          });
+
+          const response = await request.json();
+
+          outputNode.innerHTML = "";
+
+          outputNode.innerText = String(response.output || response.error).trim();
+
+          const tests = response.output.split("\n");
+
+          const testsFailed = tests.some(item => item.contains('Failed'));
+
+          if (!response.error && !testsFailed) {
+            let successfulTests = "";
+            for (const test of tests)
+              successfulTests += `${test}\n`;
+            outputNode.innerText = successfulTests;
+          }
+
+          else if (!response.error && testsFailed) {
+            let failedTests = "";
+            for (const test of testsFailed)
+              failedTests += `\n${test}\n`;
+            outputNode.innerText = failedTests;
+          }
+
+          Prism.highlightElement(outputNode);
+        } catch (error) {
+          console.log(error);
+        }
+        finally {
+          outputLoader.style.display = 'none';
+        }
+      }
+
+      const cards = document.getElementsByName('card');
+
+      const cardsTimeline = gsap.timeline();
+
+      let highlightText = document.getElementById('editing');
+
+      highlightText.value = "def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass";
+
+
+      function update(text) {
+        let result_element = document.getElementById("highlighting-content");
+        // Update code
+        result_element.innerText = text;
+
+        if (text[text.length - 1] == "\n") { // If the last character is a newline character
+          text += " "; // Add a placeholder space character to the final line 
         }
 
-        else if (!response.error && testsFailed) {
-          let failedTests = "";
-          for (const test of testsFailed)
-            failedTests += `\n${test}\n`;
-          outputNode.innerText = failedTests;
+        result_element.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+        // Syntax Highlight
+        Prism.highlightElement(result_element);
+      }
+
+      function check_tab(element, event) {
+        let code = element.value;
+        if (event.key == "Tab") {
+          /* Tab key pressed */
+          event.preventDefault(); // stop normal
+          let before_tab = code.slice(0, element.selectionStart); // text before tab
+          let after_tab = code.slice(element.selectionEnd, element.value.length); // text after tab
+          let cursor_pos = element.selectionEnd + 1; // where cursor moves after tab - moving forward by 1 char to after tab
+          element.value = before_tab + "\t" + after_tab; // add tab char
+
+          element.selectionStart = cursor_pos;
+          element.selectionEnd = cursor_pos;
+          update(element.value); // Update text to include indent
         }
-
-        Prism.highlightElement(outputNode);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const cards = document.getElementsByName('card');
-
-    const cardsTimeline = gsap.timeline();
-
-    let highlightText = document.getElementById('editing');
-
-    highlightText.value = "def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass";
-
-    update("def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass");
-
-    function update(text) {
-      let result_element = document.getElementById("highlighting-content");
-      // Update code
-      result_element.innerText = text;
-
-      if (text[text.length - 1] == "\n") { // If the last character is a newline character
-        text += " "; // Add a placeholder space character to the final line 
       }
 
-      result_element.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
-      // Syntax Highlight
-      Prism.highlightElement(result_element);
-    }
+      update("def why_im_better_than_your_seniours(num:str, target:int):" + "\n\t" + "pass");
 
-    function check_tab(element, event) {
-      let code = element.value;
-      if (event.key == "Tab") {
-        /* Tab key pressed */
-        event.preventDefault(); // stop normal
-        let before_tab = code.slice(0, element.selectionStart); // text before tab
-        let after_tab = code.slice(element.selectionEnd, element.value.length); // text after tab
-        let cursor_pos = element.selectionEnd + 1; // where cursor moves after tab - moving forward by 1 char to after tab
-        element.value = before_tab + "\t" + after_tab; // add tab char
+      function sync_scroll(element) {
+        /* Scroll result to scroll coords of event - sync with textarea */
+        let result_element = document.querySelector("#highlighting");
 
-        element.selectionStart = cursor_pos;
-        element.selectionEnd = cursor_pos;
-        update(element.value); // Update text to include indent
+        let result_element_wrapper = document.querySelector(".editor__wrapper");
+        // Get and set x and y
+        result_element.scrollTop = element.scrollTop;
+        result_element.scrollLeft = element.scrollLeft;
+
+        result_element_wrapper.style.height = result_element.offsetHeight + 'px';
       }
-    }
 
-    function sync_scroll(element) {
-      /* Scroll result to scroll coords of event - sync with textarea */
-      let result_element = document.querySelector("#highlighting");
 
-      let result_element_wrapper = document.querySelector(".editor__wrapper");
-      // Get and set x and y
-      result_element.scrollTop = element.scrollTop;
-      result_element.scrollLeft = element.scrollLeft;
-
-      result_element_wrapper.style.height = result_element.offsetHeight + 'px';
-    }
+    //need to think about loader
+    //add another about me section
+    //need to think about 
 
   </script>
   <script>

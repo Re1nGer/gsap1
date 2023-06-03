@@ -23,7 +23,7 @@
 @media screen and (max-width: 1250px) {
   :root {
     --fs-300: 0.4rem;
-    --fs-400: 0.7em;
+    --fs-400: 0.9rem;
     --fs-500: 1rem;
     --fs-600: 1.5rem;
     --fs-800: 4rem;
@@ -214,6 +214,22 @@
 .story__wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.try {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.try__btn {
+  border-radius: .5rem;
+  border: 1px solid #f6b352;
+  background: transparent;
+  color: #000;
+  outline: 0;
+  padding: 1rem 2rem;
+  display: none;
 }
 
 #because {
@@ -455,7 +471,6 @@
 }
 
 @media screen and (max-width: 500px) {
-
   .nav {
     padding: .5rem;
   }
@@ -464,5 +479,14 @@
     gap: 1rem;
   }
 
+  .try__btn {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .try__btn {
+    display: flex;
+  }
 }
 
